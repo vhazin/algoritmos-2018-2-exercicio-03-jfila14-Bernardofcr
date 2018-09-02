@@ -40,10 +40,10 @@ void dellista(struct Fila *lista, int del){
     while (aux!=NULL){
         if (aux->id==del){
             if (ant==NULL)
-                lista->ultimo=aux->proximo;
+                lista->primeiro=aux->proximo;
             else
                 ant->proximo=aux->proximo;
-            lista->total=lista->total-1;
+            lista->total=(lista->total)-1;
             return;
         }
         ant=aux;
