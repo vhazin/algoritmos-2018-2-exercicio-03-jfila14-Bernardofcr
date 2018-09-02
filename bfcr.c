@@ -21,7 +21,7 @@ typedef struct Fila{
 }fila;
 
 void addlista(struct Fila *lista, int add){
-    pessoaIn *novo=(pessoaIn*)malloc(sizeof(struct pessoa)); //alocar espaço subsequente na memória
+    struct pessoa *novo=(pessoaIn*)malloc(sizeof(struct pessoa)); //alocar espaço subsequente na memória
     novo->id=add;
     novo->proximo=NULL;
     if(lista->primeiro==NULL){
@@ -46,15 +46,17 @@ void dellista(struct Fila *lista, int del){
             lista->total=lista->total-1;
             return;
         }
+        ant=aux;
+        aux=aux->proximo;
     }
 }
 
 int main(void) {
     struct Fila *fila;
     fila=malloc(sizeof(struct Fila));
-    
     int n, n0=0, codigo, m = 0, m0=0; //n = quantidade de pessoas
     scanf("%d",&n); //receber quantidade de pessoas
+    fila->total=n;
     while (n0<n){
         scanf("%d",&codigo);
         addlista(fila,codigo);
@@ -66,8 +68,9 @@ int main(void) {
         dellista(fila,codigo);
         m0++;
     }
+    int r=n-m;
     struct pessoa *print=fila->primeiro;
-    while (m0--){
+    while (r--){
         printf("%d ", print->id);
         print=print->proximo;
     }
