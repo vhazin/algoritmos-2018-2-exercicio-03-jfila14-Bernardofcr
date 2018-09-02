@@ -18,7 +18,7 @@ typedef struct Fila{
     int total;
     struct pessoa *primeiro;
     struct pessoa *ultimo;
-};
+}fila;
 
 void addlista(struct Fila *lista, int add){
     pessoaIn *novo=(pessoaIn*)malloc(sizeof(struct pessoa)); //alocar espaço subsequente na memória
@@ -36,7 +36,7 @@ void addlista(struct Fila *lista, int add){
 
 void dellista(struct Fila *lista, int del){
     struct pessoa *ant = NULL, *aux;
-    aux=lista->ultimo;
+    aux=lista->primeiro;
     while (aux!=NULL){
         if (aux->id==del){
             if (ant==NULL)
@@ -60,8 +60,8 @@ int main(void) {
         addlista(fila,codigo);
         n0++;
     }
-    scanf("%d",m);
-    while (m0<0){
+    scanf("%d",&m);
+    while (m0<m){
         scanf ("%d",&codigo);
         dellista(fila,codigo);
         m0++;
