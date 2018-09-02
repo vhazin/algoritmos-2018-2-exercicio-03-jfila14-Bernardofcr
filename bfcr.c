@@ -12,13 +12,13 @@
 typedef struct pessoa{
     int id; // id = mnumero identificador de pessoa
     struct pessoa *proximo; //ponteiro para o proximo elemento
-}pessoaIn, pessoaOut;
+}pessoaIn;
 
 typedef struct Fila{
     int total;
     struct pessoa *primeiro;
     struct pessoa *ultimo;
-}fila;
+};
 
 void addlista(struct Fila *lista, int add){
     struct pessoa *novo=(pessoaIn*)malloc(sizeof(struct pessoa)); //alocar espaço subsequente na memória
@@ -49,6 +49,7 @@ void dellista(struct Fila *lista, int del){
         ant=aux;
         aux=aux->proximo;
     }
+    return;
 }
 
 int main(void) {
